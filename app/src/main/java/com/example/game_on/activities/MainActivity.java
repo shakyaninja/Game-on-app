@@ -1,21 +1,19 @@
-package com.example.game_on;
+package com.example.game_on.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.game_on.R;
 
 public class MainActivity extends AppCompatActivity {
     //        implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,11 +43,16 @@ public class MainActivity extends AppCompatActivity {
         Loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                setContentView(R.layout.welcome_page);
                 Text1.setText(Name.getText());
-                Text2.setText(Customerid.getText());
+                Text2.setText(Password.getText());
                 Text3.setText(Username.getText());
-                Text4.setText(Password.getText());
+                Text4.setText(Customerid.getText());
+                Intent intent= new Intent(MainActivity.this,SecondActivity.class);
+//                String name= Name.getText();
+                intent.putExtra("NAME",Name.getText().toString());
+                startActivity(intent);
+
+//                setContentView(R.layout.welcome_page);
             }
         });
 //        Toolbar toolbar = findViewById(R.id.toolbar);

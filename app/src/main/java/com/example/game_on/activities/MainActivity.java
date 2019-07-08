@@ -1,6 +1,7 @@
 package com.example.game_on.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -14,10 +15,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.game_on.R;
+import com.example.game_on.modal.Customers;
+
+import static android.net.Uri.*;
 
 public class MainActivity extends AppCompatActivity {
     //        implements NavigationView.OnNavigationItemSelectedListener {
     private Button Loginbtn;
+    private Button Openbtn;
     private EditText Name;
     private EditText Customerid;
     private EditText Username;
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Text3 = findViewById(R.id.text3);
         Text4 = findViewById(R.id.text4);
         Loginbtn = findViewById(R.id.loginbtn);
+        Openbtn =findViewById(R.id.openbtn);
+        final Customers customers = new Customers();
         Loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,12 +54,25 @@ public class MainActivity extends AppCompatActivity {
                 Text2.setText(Password.getText());
                 Text3.setText(Username.getText());
                 Text4.setText(Customerid.getText());
-                Intent intent= new Intent(MainActivity.this,SecondActivity.class);
+                customers.setCustomerName(Name.getText().toString());
+                customers.setCustomerId(Customerid.getText().toString());
+                customers.setCustomerUsername(Username.getText().toString());
+                customers.setCustomerPassword(Password.getText().toString());
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 //                String name= Name.getText();
-                intent.putExtra("NAME",Name.getText().toString());
+                intent.putExtra("NAME", Name.getText().toString());
+                intent.putExtra("CUSTOMER",customers);
                 startActivity(intent);
-
 //                setContentView(R.layout.welcome_page);
+            }
+        });
+        Openbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url ="https://www.google.com";
+                Intent  i= new Intent(Intent.ACTION_VIEW);
+                i.setData(parse(url));
+                startActivity(i);
             }
         });
 //        Toolbar toolbar = findViewById(R.id.toolbar);
@@ -72,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 //        drawer.addDrawerListener(toggle);
 //        toggle.syncState();
 //        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-
+//
 
     }
 

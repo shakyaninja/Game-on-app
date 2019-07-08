@@ -3,7 +3,11 @@ package com.example.game_on.modal;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Customers extends AppCompatActivity {
+import com.example.game_on.R;
+
+import java.io.Serializable;
+
+public class Customers extends AppCompatActivity implements Serializable {
     private String customerName;
     private String customerId;
     private String customerUsername;

@@ -18,6 +18,7 @@ public class Customers extends AppCompatActivity implements Serializable {
     }
 
     public Customers(String customerName, String customerId, String customerUsername, String customerPassword) {
+//        parameterized constructor
         this.customerName = customerName;
         this.customerId = customerId;
         this.customerUsername = customerUsername;

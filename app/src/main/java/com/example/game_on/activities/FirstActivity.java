@@ -1,16 +1,18 @@
 package com.example.game_on.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
-import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,22 +20,23 @@ import android.widget.TextView;
 import com.example.game_on.R;
 import com.example.game_on.modal.Customers;
 
-import static android.net.Uri.*;
+import static android.net.Uri.parse;
 
-public class MainActivity extends AppCompatActivity {
-    //        implements NavigationView.OnNavigationItemSelectedListener {
-    private static int SPLASH_TIME_OUT =4000;
+public class FirstActivity extends AppCompatActivity {
+    private Button Loginbtn;
+    private Button Openbtn;
+    private EditText Name;
+    private EditText Customerid;
+    private EditText Username;
+    private EditText Password;
+    private TextView Text1;
+    private TextView Text2;
+    private TextView Text3;
+    private TextView Text4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_main);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent homeintent=new Intent(MainActivity.this,FirstActivity.class);
-                startActivity(homeintent);
-            }
-        },SPLASH_TIME_OUT);
+        setContentView(R.layout.activity_first);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //        FloatingActionButton fab = findViewById(R.id.fab);
@@ -44,17 +47,47 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-//
-
+//        getWindow().setFlags(WindowManager.LayoutParams);
+        Name = findViewById(R.id.nameid);
+        Customerid = findViewById(R.id.customerid);
+        Username = findViewById(R.id.username);
+        Password = findViewById(R.id.password);
+        Text1 = findViewById(R.id.text1);
+        Text2 = findViewById(R.id.text2);
+        Text3 = findViewById(R.id.text3);
+        Text4 = findViewById(R.id.text4);
+        Loginbtn = findViewById(R.id.loginbtn);
+        Openbtn = findViewById(R.id.openbtn);
+        final Customers customers = new Customers();
+        Loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Text1.setText(Name.getText());
+                Text2.setText(Password.getText());
+                Text3.setText(Username.getText());
+                Text4.setText(Customerid.getText());
+                customers.setCustomerName(Name.getText().toString());
+                customers.setCustomerId(Customerid.getText().toString());
+                customers.setCustomerUsername(Username.getText().toString());
+                customers.setCustomerPassword(Password.getText().toString());
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+//                String name= Name.getText();
+                intent.putExtra("NAME", Name.getText().toString());
+                intent.putExtra("CUSTOMER", customers);
+                startActivity(intent);
+//                setContentView(R.layout.welcome_page);
+            }
+        });
+        Openbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://www.google.com";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(parse(url));
+                startActivity(i);
+            }
+        });
     }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -109,5 +142,6 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+        }
 }
+

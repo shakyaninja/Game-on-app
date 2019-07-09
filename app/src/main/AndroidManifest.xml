@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".modal.Customers"></activity>
+        <activity android:name=".activities.RecyclerView"></activity>
+        <activity
+            android:name=".activities.FirstActivity"
+            android:label="@string/title_activity_first"
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".modal.Customers" />
         <activity android:name=".activities.SecondActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

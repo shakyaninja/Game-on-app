@@ -25,4 +25,6 @@
     <string name="join_us">Join Us</string>
     <string name="autofill_name">Luja Shakya</string>
     <string name="url">www.google.com</string>
+    <string name="title_activity_first">FirstActivity</string>
+    <string name="game_on">Game-On</string>
 </resources>

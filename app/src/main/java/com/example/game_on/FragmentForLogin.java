@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,5 +107,14 @@ public class FragmentForLogin extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public static class TestClass {
+        public static void main(String[] args) {
+            List<String> name= new ArrayList<>();
+            name.add("Luja");
+            name.add("Sunil");
+            System.out.println(name);
+        }
     }
 }

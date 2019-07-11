@@ -44,7 +44,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                setContentView(R.layout.content_main);
-                Intent intent = new Intent(SecondActivity.this, FirstActivity.class);
+                Intent intent = new Intent(SecondActivity.this, RecyclerViewExample.class);
                 startActivity(intent);
             }
         });

@@ -24,7 +24,6 @@ public class Customers extends AppCompatActivity implements Serializable {
         this.customerUsername = customerUsername;
         this.customerPassword = customerPassword;
     }
-
     public String getCustomerId() {
         return customerId;
     }

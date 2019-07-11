@@ -22,7 +22,7 @@ import static android.net.Uri.*;
 
 public class MainActivity extends AppCompatActivity {
     //        implements NavigationView.OnNavigationItemSelectedListener {
-    private static int SPLASH_TIME_OUT =4000;
+    private static int SPLASH_TIME_OUT =3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
